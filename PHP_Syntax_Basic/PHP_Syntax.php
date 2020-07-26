@@ -39,7 +39,25 @@
 
     // 5 ) file_get_contents(파일경로)를 통해 파일 내용을 read 한다.
     // node.js 의 fileread(파일경로, 'utf-8', function(err,data){})
-     echo file_get_contents("../data/".$_GET['name']).$b;
+    echo file_get_contents("../data/".$_GET['name']).$b;
+
+    // 6 ) file_put_contents(파일경로, 내용)를 통해 파일을 생성 한다.
+    // node.js 의 writeFile(파일경로, 파일 내용, [옵션], function(err,data){})
+    file_put_contents('data/'.$_POST['title'], $_POST['desc']);
+
+    // 7 ) rename($old_name, $new_name [, $context])을 통해 파일명을 수정한다.
+    // node.js의 fs.rename('old_name','$new_name', function(err,data){})
+    rename('data/'$_POST['oldtitle'],'data/'$_POST['title']);
+
+
+    /* 8 ) header() 함수는 모든 것에 상관없이 실제 출력 전에 콜되어야 한다
+    파라메터 - string
+    HTTP/ - 이 헤더는 송신하는 HTTP 스테이터스코드를 표시하기 위해 사용
+    ex - header("HTTP/1.0 404 Not Found");
+    Location: - 이 헤더는 브라우저를 리다이렉트(302)를 위해 사용
+    ex - header("Location:http://www.google.com");
+    */
+    header($header [, $replace, $http_response_code]);
 
 
 
