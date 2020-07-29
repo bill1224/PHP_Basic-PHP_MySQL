@@ -47,6 +47,11 @@ function print_description() {
            아래와 같은 <\?=의 형식으로 적어도 된다.
            업데이트 시에는 업데이트 페이지로 이동했을 때, 해당 ID값을 가져가게 한다. -->
       <a href="update.php?id=<?= $_GET['id'];?>">update</a>
+      <!-- 삭제시에는 delete라는 다른 페이지가 필요하지 않다. -->
+      <form  action="delete_process.php" method="post">
+        <input type="hidden" name="id" value="<?php print_title();?>">
+        <input type="submit" name="submit" value="delete">
+      </form>
      <?php } ?>
      <h2>
        <?php print_title(); ?>
