@@ -4,6 +4,7 @@ $conn = mysqli_connect("localhost", "root", "", "opentutorials");
 $sql = "SELECT * FROM  topic LIMIT 1000";
 $result = mysqli_query($conn, $sql);
 $list = '';
+
 // mysqli_query 를 통해 얻은 리절트 셋(result set)에서 레코드를 1개씩 리턴해주는 함수
 // mysqli_fetch_array는 순번을 키로 하는 일반 배열과
 // 컬럼명을 키로 하는 연관배열 둘 모두 값으로 갖는 배열을 리턴
@@ -15,6 +16,21 @@ while ($row = mysqli_fetch_array($result)) {
   $list= $list."<li><a href=\"index_.php?id={$row['id']}\">{$row['title']}</a></li>";
 }
 
+// $article을 먼저 생성해, id 값이 없을때의 title과 description을 미리 지정한다.
+$article = array('title'=>'Welcome','description'=>'Hello WEB');
+// id값이 있을 때만 아래 내용을 실행한다, id값이 없는 메인페이지는 위의 $article을 따라 실행됨.
+if(isset($_GET['id'])){
+  // id값을 가진 페이지의 title과 desc를 얻어 해당 페이지에 내용을 불러오는 방법에 대해 설명한다.
+  // id를 get방식으로 설정한 페이지에서는, id값을 가진 쿼리문만을 불러오고
+  $sql = "SELECT * FROM  topic WHERE id ={$_GET['id']} LIMIT 1000";
+  $result = mysqli_query($conn, $sql);
+  // 불러온 쿼리문을 레코드로 생성한다.
+  $row = mysqli_fetch_array($result);
+  // $row에는 레코드 전체의 배열이기 때문에, 사용의 편의를 위해 $article이라는 배열로
+  // 필요한 값만을 삽입해 사용한다.
+  // $article['title'] = $row['title']; 의 형식을 사용해도 된다.
+  $article = array('title'=>$row['title'],'description'=>$row['description']);
+}
 ?>
 
 <!doctype html>
@@ -24,12 +40,12 @@ while ($row = mysqli_fetch_array($result)) {
   <title>WEB</title>
   </head>
   <body>
-    <h1>WEB</h1>
+    <h1><a href="index_.php">WEB</a></h1>
     <ol>
       <?= $list ?>
     </ol>
     <a href="create.php">create</a>
-    <h2>Welcome</h2>
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit
+    <h2><?= $article['title']; ?></h2>
+    <?= $article['description']; ?>
   </body>
 </html>
