@@ -1,5 +1,5 @@
-<?php require_once('./lib/print.php');
-      require('./lib/top.php');
+<?php require_once('../lib/print.php');
+      require('../lib/top.php');
  ?>
 
 
