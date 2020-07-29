@@ -13,7 +13,7 @@ function print_title(){
 function print_list(){
    // 파일이 추가되면 자동으로 목록을 추가하는 리스트를 만든다.
    // 문법 내용은 PHP_Syntax의 4번 항목
-   $list = scandir('./data');
+   $list = scandir('../data');
 
    for ($i=0; $i <count($list) ; $i++) {
      // htmlspecialchars 사용
@@ -26,7 +26,7 @@ function print_description() {
   // ID 값과 동일한 파일명을 찾고 있다면, 내용을 불러오고, 없으면 Hello PHP로 대체한다.
   if(isset($_GET['id'])){
  // 문법 내용은 PHP_Syntax의 5번 항목
-  echo htmlspecialchars(file_get_contents("data/".$_GET['id']));
+  echo htmlspecialchars(file_get_contents("../data/".$_GET['id']));
  } else {
    echo "Hello PHP";
  }
