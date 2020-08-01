@@ -1,5 +1,5 @@
-<?php  
-	include "../db.php";
+<?php
+	include "./db.php";
 ?>
 <!DOCTYPE html>
 <html>
@@ -51,7 +51,7 @@
 					</table>
 
 				<input type="submit" value="가입하기" /><input type="reset" value="다시쓰기" />
-			
+
 		</fieldset>
 	</form>
 </body>

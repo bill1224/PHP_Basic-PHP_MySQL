@@ -1,43 +1,69 @@
-<?php   
+<?php
 include "./db.php";
 ?>
 
 <head>
 	<meta charset="utf-8" />
 	<title></title>
-<link rel="stylesheet" type="text/css" href="/css/common.css" />
+	<link rel="stylesheet" type="text/css" href="./css/mystyle.css" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(function() {
+			$(".s").on('click',function() {
+				$("#mform").submit();
+			});
+			$(".m").on('click',function() {
+				$(location).attr('href',"./member.php" );
+			})
+
+		});
+	</script>
 </head>
-<body>
 	<br>
 	<br>
 	<br>
 	<div id="login_box">
-		<h1>Login</h1>							
-			<form method="post" action="/member/login_ok.php">
+		<div class="title-container">
+	  </div>
+			<form id="mform" method="post" action="./login_ok.php">
 				<table align="center" border="0" cellspacing="0" width="300">
 					<tr>
-						<td colspan="2"> 
-							<img src="./img/id.png" width="25">
-							<input type="text" name="userid" class="inph">
+						<td colspan="10">
+							<div class="title-container">
+						 <h1 align="center">Login</h1>
+					 </td>
+					</tr>
+					<tr>
+						<td colspan="10">
+							<div class="line">	</div>
 						</td>
 					</tr>
-						<td colspan="2">
-							<img src="./img/pw.png" width="25">
+						<tr>
+							<td colspan="2">id</td>
+							<td align="center">
+								<!-- <img src="./img/id.png" width="25"> -->
+	              <input type="text" name="userid" class="inph">
+							</td>
+						</tr>
+					 <tr>
+						<td colspan="2">pwd</td>
+						<td align="center">
+							<!-- <img src="./img/pw.png" width="25"> -->
 							<input type="password" name="userpw" class="inph">
 						</td>
+					</tr>
 					<tr>
-						<td colspan="2"> 
+						<td>
 						<br>
 						</td>
 					</tr>
 					<tr>
-						<td class="mem"> 
-							<button type="button" onclick="location.href='/member/member.php'" >Create Account</button>
+						<td align="center" colspan="5">
+							<div class="mine s" id="btn">Sign in</div>
 						</td>
-						<td> 
-							<button type="submit" id="btn" >Sign in</button>
+						<td align="center" colspan="5">
+							<div class="mine m">Create Account</div>
 						</td>
-						
 					</tr>
 				</table>
 			</form>
