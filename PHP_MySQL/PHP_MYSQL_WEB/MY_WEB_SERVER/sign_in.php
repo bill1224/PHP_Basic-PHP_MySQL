@@ -1,9 +1,9 @@
 <?php
 include "db_info.php";
+include "password.php";
 
-$id = $_POST['u_id'];
 $u_name = $_POST['u_name'];
-$pwd = $_POST['pwd'];
+$pwd = password_hash($_POST['pwd'],PASSWORD_DEFAULT);
 $email = $_POST['email'];
 $b_day = $_POST['b_day'];
 $gender = $_POST['gender'];
@@ -15,7 +15,7 @@ if($id == NULL || $u_name == NULL || $pwd == NULL || $email == NULL || $b_day ==
 } else {
   echo "Good"."<br>";
 }
-$check = "SELECT * FROM sign_up2 where u_id = '$id'";
+$check = "SELECT * FROM sign_up where u_name = '$id'";
 $result = mysqli_query($mysqli,$check);
   if($result->num_rows == 1){
     echo "used ID"."<br>";
@@ -24,8 +24,8 @@ $result = mysqli_query($mysqli,$check);
   } else {
     echo "OK"."<br>";
  }
-$sql = "INSERT INTO sign_up2 (u_id, u_name, pwd, email, b_day, gender)
-        VALUES ('$id','$u_name','$pwd','$email','$b_day','$gender')";
+$sql = "INSERT INTO sign_up (u_name, pwd, email, b_day, gender)
+        VALUES ('$u_name','$pwd','$email','$b_day','$gender')";
 $result = mysqli_query($mysqli,$sql);
 if($result){
   echo "sign ip successfully"."<br>";

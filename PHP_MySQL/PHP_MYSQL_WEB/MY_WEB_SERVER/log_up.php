@@ -19,7 +19,7 @@
         <form class="" action="log_in.php" method="post">
           <div>
             <h3>ID</h3>
-          <input type="text" name="u_id" size="18">
+          <input type="text" name="u_name" size="18">
           </div>
           <div>
           <h3>password</h3>
