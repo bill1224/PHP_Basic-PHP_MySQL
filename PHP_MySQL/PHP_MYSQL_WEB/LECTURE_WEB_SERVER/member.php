@@ -27,6 +27,10 @@
 			$(".re").on('click',function() {
 				$(location).attr('href',"./member.php" );
 			});
+
+			$(".b").on('click',function() {
+				$(location).attr('href',"./index.php" );
+			});
 		});
 	</script>
 </head>
@@ -76,17 +80,18 @@
 						</tr>
 						<tr>
 							<td align="center" colspan="5">
-								<div class="mine r" type="submit" />Register
+								<div class="mine r"/>Register
 							</td>
 							<td align="center" colspan="6">
-								<div class="mine re" type="reset" />Rewrite
+								<div class="mine re"/>Rewrite
 							</td>
 						</tr>
 						<tr>
 							<td  colspan="9">&nbsp</td>
 						</tr>
 					</table>
-
+					<div class="line"></div>
+						<div class="mine b" type="submit" />Back
 
 		</fieldset>
 	</form>
