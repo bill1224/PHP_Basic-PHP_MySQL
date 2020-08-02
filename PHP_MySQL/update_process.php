@@ -17,6 +17,6 @@ if ($result === false) {
   echo mysqli_error($conn);
 } else {
   echo "<script>alert(\"변경 성공\");</script>";
-  echo "<script>window.location = 'index_.php/'</script>";
+  echo "<script>window.location = 'index_.php?id=".$filtered['id']."'</script>";
 }
  ?>
