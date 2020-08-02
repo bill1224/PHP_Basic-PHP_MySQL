@@ -1,3 +1,10 @@
+<!--
+1 ) 보안 관련 정보를 추가 한다 .
+  1.들어오는 정보의 관련한 보안
+  2.출력하는 정보의 관련한 보안
+
+-->
+
 <?php
 $conn = mysqli_connect("localhost", "root", "", "opentutorials");
 
@@ -22,7 +29,11 @@ $article = array('title'=>'Welcome','description'=>'Hello WEB');
 if(isset($_GET['id'])){
   // id값을 가진 페이지의 title과 desc를 얻어 해당 페이지에 내용을 불러오는 방법에 대해 설명한다.
   // id를 get방식으로 설정한 페이지에서는, id값을 가진 쿼리문만을 불러오고
-  $sql = "SELECT * FROM  topic WHERE id ={$_GET['id']} LIMIT 1000";
+
+  // 1 ) mysqli_real_escape_string : 쿼리를 MySQL로 보내기 전에 항상 데이터를 안전하게 만드는 데 사용
+  // 이를통해 SQL injection을(URL를 통해 id값을 삽입하는 것) 차단할 수 있다.
+  $filtered_id = mysqli_real_escape_string($conn, $_GET['id']);
+  $sql = "SELECT * FROM  topic WHERE id ={$filtered_id} LIMIT 1000";
   $result = mysqli_query($conn, $sql);
   // 불러온 쿼리문을 레코드로 생성한다.
   $row = mysqli_fetch_array($result);
@@ -45,6 +56,10 @@ if(isset($_GET['id'])){
       <?= $list ?>
     </ol>
     <a href="create.php">create</a>
+    <?php
+    if(isset($filtered_id)){ ?>
+      <a href="update.php?id=<?=$filtered_id?>">update</a>
+    <?php } ?>
     <h2><?= $article['title']; ?></h2>
     <?= $article['description']; ?>
   </body>
