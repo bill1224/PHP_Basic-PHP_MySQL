@@ -10,7 +10,7 @@ CREATE TABLE topic (
 
 
 
---------------------------------- 관계형
+--------------------------------- 관계형 DB
 
 --
 -- Table structure for table `author`
