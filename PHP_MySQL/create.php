@@ -3,6 +3,7 @@
   1.들어오는 정보의 관련한 보안
   2.출력하는 정보의 관련한 보안
 
+2 ) 관계형 데이터 베이스 도입
 -->
 
 
@@ -17,7 +18,18 @@ while ($row = mysqli_fetch_array($result)) {
   $list= $list."<li><a href=\"index_.php?id={$row['id']}\">{$row['title']}</a></li>";
 }
 
-$article = array('title'=>'Welcome','description'=>'Hello WEB');
+$sql = "SELECT * FROM author";
+$result = mysqli_query($conn, $sql);
+// 2 ) 글을 생성할 때 , author를 지정하기 위해서, html의 select문을 사용한다.
+// create의 html내용을 통해서 사용자가 author의 name을 지정하면
+// 지정한 값의 id가 post 값으로 create_process로 넘어가게 된다.
+// select의 이름인 author_id는 post시의 이름으로 지정된다.
+$select = "<select name ='author_id'>";
+while ($row = mysqli_fetch_array($result)) {
+$select .='<option value="'.$row['id'].'">'.$row['name'].'</option>';
+}
+// 2 ) $select.= 는 $select = $select. 과 같다.
+$select .= "</select>";
 
 if(isset($_GET['id'])){
   // 1 ) mysqli_real_escape_string : 쿼리를 MySQL로 보내기 전에 항상 데이터를 안전하게 만드는 데 사용
@@ -51,6 +63,9 @@ if(isset($_GET['id'])){
       </p>
       <p>
         <textarea name="desc" rows="8" cols="80" placeholder="description"></textarea>
+      </p>
+      <p>
+        <?= $select ?>
       </p>
       <p>
         <input type="submit">

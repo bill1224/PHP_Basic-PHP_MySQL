@@ -5,13 +5,12 @@ $conn = mysqli_connect("localhost", "root", "", "opentutorials");
 // 사용자가 입력한 내용을 mysqli_real_escape_string를 통해 필터링한다.
 $filtered = array(
   'title' => mysqli_real_escape_string($conn,$_POST['title']),
-  'desc' => mysqli_real_escape_string($conn,$_POST['desc'])
+  'desc' => mysqli_real_escape_string($conn,$_POST['desc']),
+  'author_id' => mysqli_real_escape_string($conn,$_POST['author_id'])
 );
-
-$sql = "INSERT INTO topic (title, description, created)
-        VALUES ('{$filtered['title']}','{$filtered['desc']}',NOW())";
+$sql = "INSERT INTO topic (title, description, created, author_id)
+        VALUES ('{$filtered['title']}','{$filtered['desc']}',NOW(),'{$filtered['author_id']}')";
 $result = mysqli_query($conn, $sql);
-
 if ($result === false) {
   echo "저장 실패";
   // C:\xampp\apache\logs 에 mysqli_error($conn)를 통한 DB오류 log 내용을 저장한다.
