@@ -8,31 +8,7 @@
 	<title>선문대학교 종합프로젝트 5조 영화 추천 사이트</title>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="./css/registration.css"/>
-	<script>
-		$(function() {
-			$("#chk").on('click',function(){
-				var id = $("#uid").val();
-				if(id){
-					id = "check.php?userid="+id;
-					window.open(id,"_blank","width=300,height=100");
-					}else{
-						alert("아이디를 입력세요");
-					}
-			});
-
-			$(".r").on('click',function() {
-				$("#mform").submit();
-			});
-
-			$(".re").on('click',function() {
-				$(location).attr('href',"./member.php" );
-			});
-
-			$(".b").on('click',function() {
-				$(location).attr('href',"./index.php" );
-			});
-		});
-	</script>
+	<script src="./javascr/onClickFunc.js"></script>
 </head>
 <body>
 	<div id="login_box">

@@ -8,17 +8,7 @@ include "./db.php";
 	<link rel="stylesheet" type="text/css" href="./css/mystyle.css" />
 	<link rel="stylesheet" type="text/css" href="./css/maintitle.css" />
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	<script type="text/javascript">
-		$(function() {
-			$(".s").on('click',function() {
-				$("#mform").submit();
-			});
-			$(".m").on('click',function() {
-				$(location).attr('href',"./member.php" );
-			})
-
-		});
-	</script>
+	<script src="./javascr/onClickFunc.js"></script>
 </head>
 	<br>
 	<br>
