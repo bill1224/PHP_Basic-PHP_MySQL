@@ -20,7 +20,7 @@ while ($row = mysqli_fetch_array($result)) {
   // list 변수에 <li> 태그 내용만 담아내 html 내부에서 echo 를 수행시킴
   // $row는 연관배열의 형태로 title의 key 값 내부에 작성한 title의 실제 value 값이 담긴다.
   // 링크 형태로 list를 제공하기 위해서 <a> 태그를 사용해 id를 get방식으로 설정하였다.
-  $list= $list."<li><a href=\"index_.php?id={$row['id']}\">{$row['title']}</a></li>";
+  $list= $list."<li><a href=\"./index_.php?id={$row['id']}\">{$row['title']}</a></li>";
 }
 
 // $article을 먼저 생성해, id 값이 없을때의 title과 description을 미리 지정한다.
@@ -51,14 +51,21 @@ if(isset($_GET['id'])){
   <title>WEB</title>
   </head>
   <body>
-    <h1><a href="index_.php">WEB</a></h1>
+    <h1><a href="./index_.php">WEB</a></h1>
     <ol>
       <?= $list ?>
     </ol>
-    <a href="create.php">create</a>
+    <a href="./create.php">create</a>
     <?php
     if(isset($filtered_id)){ ?>
-      <a href="update.php?id=<?=$filtered_id?>">update</a>
+      <a href="./update.php?id=<?=$filtered_id?>">update</a>
+    <?php } ?>
+    <?php
+    if(isset($filtered_id)){ ?>
+      <form action="delete_process.php" method="post">
+        <input type="hidden" name="id" value="<?=$_GET['id']?>">
+        <input type="submit" value="delete">
+      </form>
     <?php } ?>
     <h2><?= $article['title']; ?></h2>
     <?= $article['description']; ?>
