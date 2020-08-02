@@ -3,6 +3,7 @@
   1.들어오는 정보의 관련한 보안
   2.출력하는 정보의 관련한 보안
 
+2 ) 관계형 데이터 베이스 도입
 -->
 
 <?php
@@ -25,6 +26,9 @@ while ($row = mysqli_fetch_array($result)) {
 
 // $article을 먼저 생성해, id 값이 없을때의 title과 description을 미리 지정한다.
 $article = array('title'=>'Welcome','description'=>'Hello WEB');
+
+// 2 ) author를 생성해서 $_GET['id']가 있는 경우 author의 name이 표시되도록 한다.
+$author = '';
 // id값이 있을 때만 아래 내용을 실행한다, id값이 없는 메인페이지는 위의 $article을 따라 실행됨.
 if(isset($_GET['id'])){
   // id값을 가진 페이지의 title과 desc를 얻어 해당 페이지에 내용을 불러오는 방법에 대해 설명한다.
@@ -33,14 +37,17 @@ if(isset($_GET['id'])){
   // 1 ) mysqli_real_escape_string : 쿼리를 MySQL로 보내기 전에 항상 데이터를 안전하게 만드는 데 사용
   // 이를통해 SQL injection을(URL를 통해 id값을 삽입하는 것) 차단할 수 있다.
   $filtered_id = mysqli_real_escape_string($conn, $_GET['id']);
-  $sql = "SELECT * FROM  topic WHERE id ={$filtered_id} LIMIT 1000";
+
+  // 2 ) topic의 author_id와 author 의 id와 같은것을 조회 한다.
+  $sql = "SELECT * FROM  topic t, author a  WHERE t.id ={$filtered_id} AND t.author_id = a.id  LIMIT 1000";
   $result = mysqli_query($conn, $sql);
   // 불러온 쿼리문을 레코드로 생성한다.
   $row = mysqli_fetch_array($result);
   // $row에는 레코드 전체의 배열이기 때문에, 사용의 편의를 위해 $article이라는 배열로
   // 필요한 값만을 삽입해 사용한다.
   // $article['title'] = $row['title']; 의 형식을 사용해도 된다.
-  $article = array('title'=>$row['title'],'description'=>$row['description']);
+  $article = array('title'=>$row['title'],'description'=>$row['description'], 'author'=>$row['name']);
+  $author = "by ".$article['author'];
 }
 ?>
 
@@ -69,5 +76,6 @@ if(isset($_GET['id'])){
     <?php } ?>
     <h2><?= $article['title']; ?></h2>
     <?= $article['description']; ?>
+    <p> <?= $author ?></p>
   </body>
 </html>
