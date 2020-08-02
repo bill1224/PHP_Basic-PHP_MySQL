@@ -23,7 +23,7 @@ $conn = mysqli_connect("localhost", "root", "", "opentutorials");
         <td>ID</td>
         <td>NAME</td>
         <td>PROFILE</td>
-        <td></td>
+        <td colspan="2">UPDATE/DELETE</td>
         <?php
         $sql = "SELECT * FROM author";
         $result = mysqli_query($conn, $sql);
@@ -40,6 +40,11 @@ $conn = mysqli_connect("localhost", "root", "", "opentutorials");
           <td><?= $filtered['profile']?></td>
           <!-- update url을 table 내에 생성하고, 해당하는 id값을 같이 저장함. -->
           <td><a href="author.php?id=<?=$filtered['id']?>">update</a></td>
+          <td>
+            <form class="" action="delete_process_author.php" method="post">
+             <input type="hidden" name="id" value="<?=$filtered['id']?>">
+             <input type="submit" value="delete">
+          </form></td>
       </tr>
           <?php
         }
