@@ -1,5 +1,6 @@
 <?php
-include "./db.php";
+include "./lib/db.php";
+include "./lib/list.php";
 $userid = $_SESSION['userid'];
 ?>
 
@@ -8,11 +9,11 @@ $userid = $_SESSION['userid'];
   <head>
     <meta charset="utf-8">
     <title></title>
-    <style media="screen">
-    </style>
+  <link rel="stylesheet" type="text/css" href="./css/list.css"/>
   </head>
   <body>
     <h1>VIEW</h1>
+    <?= $list; ?>
     <?php
     $sql = mq("select * from member where userid='".$userid."'");
     $member = $sql->fetch_array();
@@ -23,17 +24,28 @@ $userid = $_SESSION['userid'];
         'title' => htmlspecialchars($row['title']),
         'description' => htmlspecialchars($row['description']),
         'file' => htmlspecialchars($row['file']),
-        'userid' => htmlspecialchars($row['userid'])
-      ); ?>
-      <table width="1000" cellpadding="5" cellspacing="2" border="1" align="center" style="table-layout:fixed;">
-      <tr>
-        <td><p> 제목 : <?= $filtered['title'] ?></p></td>
-        <td><p> 내용 : <?= $filtered['description'] ?></p></td>
-        <td><p> 이미지 : <?= $filtered['file'] ?></p></td>
-        <td><p> 작성자 : <?= $filtered['userid'] ?></p></td>
+        'userid' => htmlspecialchars($row['userid']),
+        'write_num' => htmlspecialchars($row['write_num']),
+        'u_count' => htmlspecialchars($row['u_count'])
+      );?>
+
+      <table class="list" cellpadding="5" border="1" align="center">
+      <tr class="tltle">
+        <th>Title</th>
+        <th>Contents</th>
+        <th>Image</th>
+        <th>Writer</th>
+      </tr>
+      <tr class="value">
+        <td><p><?= $filtered['title'] ?></p></td>
+        <td><p><?= $filtered['description'] ?></p></td>
+        <td><p><img src="./file/<?= $filtered['file'] ?>" alt="이미지 없음"></p></td>
+        <td><p><?= $filtered['userid'] ?></p></td>
+        <td><div><a class="btn" href="./update.php?id=<?php echo $filtered['write_num'];?>">Rewrite</a></div></td>
+        <td><div><a class="btn" href="./process/delete_process.php?id=<?php echo $filtered['write_num'];?>">Delete</a></d></td>
       </tr>
       </table>
-      <?php   }  ?>
-      <p><a href="./movie_info.php">돌아가기</a></p>
+    <?php   } ?>
+      <br><div><a class="btn" href="./viewAll.php">Back</a></div>
   </body>
 </html>

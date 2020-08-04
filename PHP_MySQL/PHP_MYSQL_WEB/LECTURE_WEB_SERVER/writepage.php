@@ -1,5 +1,5 @@
 <?php
-include "./db.php";
+include "./lib/db.php";
 $var = $_SESSION['userid'];
 ?>
 
@@ -12,7 +12,7 @@ $var = $_SESSION['userid'];
   <body>
     <h1>WRITE</h1>
 
-    <form  action="write_process.php" enctype="multipart/form-data" method="post">
+    <form  action="./process/write_process.php" enctype="multipart/form-data" method="post">
       <p>
         <input type="hidden" name="userid" value="<?=$var?>">
       </p>
@@ -27,6 +27,6 @@ $var = $_SESSION['userid'];
       </p>
         <input type="submit">
     </form>
-    <p><a href="./movie_info.php">돌아가기</a></p>
+    <p><a href="./viewAll.php">돌아가기</a></p>
   </body>
 </html>

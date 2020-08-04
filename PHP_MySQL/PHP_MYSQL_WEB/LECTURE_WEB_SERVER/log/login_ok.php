@@ -1,6 +1,6 @@
 <meta charset="utf-8" />
 <?php
-	include "./db.php";
+	include "../lib/db.php";
 	include "./password.php";
 
 	//POST로 받아온 아이다와 비밀번호가 비었다면 알림창을 띄우고 전 페이지로 돌아갑니다.
@@ -20,9 +20,9 @@
 		$_SESSION['userid'] = $member["userid"];
 		$_SESSION['userpw'] = $member["userpw"];
 		if($code == 'U')  {
-			echo "<script>alert('로그인되었습니다.'); location.href='./movie_info.php';</script>";
+			echo "<script>alert('로그인되었습니다.'); location.href='../movie_info.php';</script>";
 		} else {
-			echo "<script>alert('관리자로 로그인되었습니다.'); location.href='./adminpage.php';</script>";
+			echo "<script>alert('관리자로 로그인되었습니다.'); location.href='../admin/adminpage.php';</script>";
 		}
 	}else{ // 비밀번호가 같지 않다면 알림창을 띄우고 전 페이지로 돌아갑니다
 		echo "<script>alert('아이디 혹은 비밀번호를 확인하세요.'); history.back();</script>";

@@ -41,7 +41,7 @@ ul li {
 	text-align:center;
 	padding:10px 0;
 	border-bottom:1px solid #CCC; height:20px;
-	font-size: 14px 
+	font-size: 14px
 }
 #write_btn {
 	position: absolute;
@@ -143,7 +143,7 @@ ul li {
 .fo_re {
 	font-weight: bold;
 	color:red;
-	margin-left: 15px; 
+	margin-left: 15px;
 }
 #search_box {
 	margin-top:30px;

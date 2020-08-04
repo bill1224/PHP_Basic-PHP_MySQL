@@ -1,5 +1,5 @@
 <?php
-	include "./db.php";
+	include "../db.php";
 
 	$uid = $_GET["userid"];
 	$sql = mq("select * from member where userid='".$uid."'");

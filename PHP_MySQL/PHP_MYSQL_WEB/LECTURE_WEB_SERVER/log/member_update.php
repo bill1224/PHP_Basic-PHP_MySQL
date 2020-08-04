@@ -1,7 +1,7 @@
 <meta charset="utf-8" />
 <?php
 
-include "./db.php";
+include "../lib/db.php";
 include "./password.php";
 
 $userpw = password_hash($_POST['userpw'], PASSWORD_DEFAULT);

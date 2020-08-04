@@ -1,5 +1,5 @@
 <?php
-	include "./db.php";
+	include "../db.php";
 	include "./password.php";
 
 	$userid = $_POST['userid'];

@@ -1,5 +1,5 @@
 <?php
-	include "./db.php";
+include "../lib/db.php";
 ?>
 <!DOCTYPE html>
 <html>
@@ -7,7 +7,7 @@
 	<meta charset="utf-8" />
 	<title>선문대학교 종합프로젝트 5조 영화 추천 사이트</title>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="./css/registration.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/registration.css"/>
 	<script src="./javascr/onClickFunc.js"></script>
 </head>
 <body>
