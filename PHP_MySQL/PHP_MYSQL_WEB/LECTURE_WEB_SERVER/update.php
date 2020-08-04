@@ -13,9 +13,12 @@ $row = $sql->fetch_array();
     <title></title>
   </head>
   <body>
-    <h1>WRITE</h1>
+    <h1>UPDATE</h1>
 
     <form  action="./process/update_process.php" enctype="multipart/form-data" method="post">
+      <p>
+        <input type="hidden" name="write_id" value="<?=$num?>">
+      </p>
       <p>
         <input type="hidden" name="id" value="<?=$row['u_count']?>">
       </p>
