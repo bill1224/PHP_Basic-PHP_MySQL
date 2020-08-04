@@ -15,7 +15,7 @@ $userid = $_SESSION['userid'];
     <h1>VIEW ALL</h1>
     <?= $list; ?>
     <?php
-    $sql = mq("select * from member, writing where member.u_count= writing.u_count AND member.u_count = writing.u_count");
+    $sql = mq("select * from member, writing where member.u_count= writing.u_count");
     while($row = $sql->fetch_array()){
       $filtered = array(
         'title' => htmlspecialchars($row['title']),
@@ -33,7 +33,7 @@ $userid = $_SESSION['userid'];
       <tr class="value">
         <td><p><?= $filtered['title'] ?></p></td>
         <td><p><?= $filtered['description'] ?></p></td>
-        <td><p><img src="./file/<?= $filtered['file'] ?>" alt="이미지 없음"></p></td>
+        <td><p><img src="./file/<?= $filtered['file']?>" alt="이미지 없음"></p></td>
         <td><p><?= $filtered['userid'] ?></p></td>
       </tr>
       </table>
