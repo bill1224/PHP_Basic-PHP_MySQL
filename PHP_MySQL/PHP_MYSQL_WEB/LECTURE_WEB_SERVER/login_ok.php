@@ -19,9 +19,8 @@
 	{
 		$_SESSION['userid'] = $member["userid"];
 		$_SESSION['userpw'] = $member["userpw"];
-
 		if($code == 'U')  {
-			echo "<script>alert('로그인되었습니다.'); location.href='./mainpage.php';</script>";
+			echo "<script>alert('로그인되었습니다.'); location.href='./movie_info.php';</script>";
 		} else {
 			echo "<script>alert('관리자로 로그인되었습니다.'); location.href='./adminpage.php';</script>";
 		}
