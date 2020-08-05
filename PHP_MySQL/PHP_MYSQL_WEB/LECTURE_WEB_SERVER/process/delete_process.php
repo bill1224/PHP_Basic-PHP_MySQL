@@ -3,11 +3,11 @@ include "../lib/db.php";
 $num = $_GET['id'];
 
 if(isset($num)) {
-$sql = mq("select * from writing where write_num ='".$num."'");
+$sql = mq("select * from writing where write_id ='".$num."'");
 $row = $sql->fetch_array();
 var_dump($row['file']);
 unlink('../file/'.$row['file']);
-$sql = mq("delete from writing where write_num ='".$num."'");
+$sql = mq("delete from writing where write_id ='".$num."'");
  echo "<script>alert('OK.')</script>";
  echo "<script>window.location = '../viewAll.php'</script>";
 } else {

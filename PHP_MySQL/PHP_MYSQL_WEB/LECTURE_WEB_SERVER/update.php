@@ -1,7 +1,7 @@
 <?php
 include "./lib/db.php";
 $num = $_GET['id'];
-$sql = mq("select * from writing where write_num ='".$num."'");
+$sql = mq("select * from writing where write_id ='".$num."'");
 $row = $sql->fetch_array();
 
 ?>

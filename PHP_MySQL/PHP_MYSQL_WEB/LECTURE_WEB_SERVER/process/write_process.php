@@ -21,7 +21,7 @@ $sql = mq("insert into writing (title,description,file,u_count) values('".$title
 } else {
   echo mysqli_error($db);
 	echo "<script>alert(\"NO.\");</script>";
-	 echo "<script>window.location = '../writepage.php'</script>";
+	echo "<script>window.location = '../writepage.php'</script>";
 }
 
 

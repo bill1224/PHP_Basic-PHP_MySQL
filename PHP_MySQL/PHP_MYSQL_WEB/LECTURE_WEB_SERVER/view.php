@@ -25,7 +25,7 @@ $userid = $_SESSION['userid'];
         'description' => htmlspecialchars($row['description']),
         'file' => htmlspecialchars($row['file']),
         'userid' => htmlspecialchars($row['userid']),
-        'write_num' => htmlspecialchars($row['write_num']),
+        'write_num' => htmlspecialchars($row['write_id']),
         'u_count' => htmlspecialchars($row['u_count'])
       );?>
 
